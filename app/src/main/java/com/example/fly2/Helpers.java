@@ -2,21 +2,17 @@ package com.example.fly2;
 
 import android.content.Context;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Iterator;
 
 public class Helpers {
 
     // Reading the local json from the assets folder
     // Returns a string
-    public static String loadJSONFromAsset(Context context) {
+    public static String loadJSONFromAsset(Context context, String fileName) {
         String json = null;
         try {
-            InputStream is = context.getAssets().open("airport_code_to_city.json"); // Name of json file in assets folder
+            InputStream is = context.getAssets().open(fileName); // Name of json file in assets folder
             int size = is.available();
             byte[] buffer = new byte[size];
             is.read(buffer);

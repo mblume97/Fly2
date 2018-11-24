@@ -2,35 +2,15 @@ package com.example.fly2;
 
 public class TicketPair {
 
-    private Airport firstDepartureAirport;
-    private Airport secondDepartureAirport;
-    private City destination;
     private Ticket firstTicket;
     private Ticket secondTicket;
     private Price totalPrice;
 
-    public Airport getFirstDepartureAirport() {
-        return firstDepartureAirport;
-    }
 
-    public void setFirstDepartureAirport(Airport firstDepartureAirport) {
-        this.firstDepartureAirport = firstDepartureAirport;
-    }
-
-    public Airport getSecondDepartureAirport() {
-        return secondDepartureAirport;
-    }
-
-    public void setSecondDepartureAirport(Airport secondDepartureAirport) {
-        this.secondDepartureAirport = secondDepartureAirport;
-    }
-
-    public City getDestination() {
-        return destination;
-    }
-
-    public void setDestination(City destination) {
-        this.destination = destination;
+    public TicketPair(Ticket firstTicket, Ticket secondTicket, Price totalPrice) {
+        this.firstTicket = firstTicket;
+        this.secondTicket = secondTicket;
+        this.totalPrice = totalPrice;
     }
 
     public Ticket getFirstTicket() {

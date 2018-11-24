@@ -2,8 +2,13 @@ package com.example.fly2;
 
 public class Airport {
 
-    private String airportName;
     private String airportCode;
+    private String airportName;
+
+    public Airport(String airportCode, String airportName) {
+        this.airportCode = airportCode;
+        this.airportName = airportName;
+    }
 
     public String getAirportName() {
         return airportName;
