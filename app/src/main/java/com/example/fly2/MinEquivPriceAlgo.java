@@ -10,12 +10,12 @@ public class MinEquivPriceAlgo extends AbstractAlgorithm {
 
     public TicketPair findMin(TicketPair min, TicketPair current) {
 
-        double first = current.getFirstTicket().getPrice().getPrice();
-        double second = current.getSecondTicket().getPrice().getPrice();
+        double first = current.getFirstTicket().getPrice();
+        double second = current.getSecondTicket().getPrice();
 
         double difference = Math.abs(second - first);
         double sum = first + second - difference;
-        if (min.getTotalPrice().getPrice() < sum)
+        if (min.getTotalPrice() < sum)
             return min;
         else
             return current;

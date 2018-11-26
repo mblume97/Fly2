@@ -9,7 +9,7 @@ public class MinCombinedPriceAlgo extends AbstractAlgorithm {
     }
 
     public TicketPair findMin(TicketPair min, TicketPair current) {
-        if (min.getTotalPrice().getPrice() < current.getTotalPrice().getPrice()) {
+        if (min.getTotalPrice() < current.getTotalPrice()) {
             return min;
         }
         else
