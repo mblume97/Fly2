@@ -27,6 +27,7 @@ public abstract class AbstractAlgorithm {
     private RequestQueue mQueue;
     private ArrayList<TicketPair> ticketPairs;
     private HashMap<String, TicketPair> arrivalAirportToPair;
+    private int numberProcessed;
 
     public AbstractAlgorithm(Context context) {
         this.context = context;
@@ -37,8 +38,9 @@ public abstract class AbstractAlgorithm {
 
     // Makes the ticket pairs for the cheapest flights from the two departure airports to the 60 possible destinations
     // At the end of this call, ticketPairs will be populated with 60 ticket pairs
-    private void makeTicketPairs(Airport firstDepartureAirport, Airport secondDepartureAirport, Date departureDate) {
+    private void makeTicketPairs(Airport firstDepartureAirport, Airport secondDepartureAirport, Date departureDate, Date returnDate) {
         ticketPairs = new ArrayList<>();
+        numberProcessed = 0;
         arrivalAirportToPair = new HashMap<>();
 
         // loading the local json
@@ -56,15 +58,10 @@ public abstract class AbstractAlgorithm {
                 // call the api
                 Airport arrivalAirport = new Airport(airportCode, codeToAirportNameJSON.getString(airportCode));
                 City destinationCity = new City(codeToCityJSON.getString(airportCode));
-                Flight firstFlight = new Flight(firstDepartureAirport, arrivalAirport, departureDate, destinationCity);
+                Flight firstFlight = new Flight(firstDepartureAirport, arrivalAirport, departureDate, returnDate, destinationCity);
                 getMinFlightPrice(firstFlight);
-                Flight secondFlight = new Flight(secondDepartureAirport, arrivalAirport, departureDate, destinationCity);
+                Flight secondFlight = new Flight(secondDepartureAirport, arrivalAirport, departureDate,returnDate, destinationCity);
                 getMinFlightPrice(secondFlight);
-//                try {
-//                    String cityName = codeToCityJSON.getString(airportCode); // Getting the city name
-//                } catch (JSONException e) {
-//                    // Something went wrong!
-//                }
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -75,26 +72,24 @@ public abstract class AbstractAlgorithm {
     // Makes the ticketPairs
     // Returns the minimum/cheapest pair that was created
     // TODO: decide if we want to return one, or like top 3?
-    public TicketPair findOptimal(Airport firstDepartureAirport, Airport secondDepartureAirport, Date date) {
-        makeTicketPairs(firstDepartureAirport, secondDepartureAirport, date); // Makes the SkyScanner API calls
-        TicketPair min = ticketPairs.get(0);
-        for (int i = 1; i < ticketPairs.size(); i++) {
-            min = findMin(min, ticketPairs.get(i)); // Calls the concrete class’ findMin()
-        }
-        return min;
+    public TicketPair findOptimal(Airport firstDepartureAirport, Airport secondDepartureAirport, Date departureDate, Date returnDate) {
+        makeTicketPairs(firstDepartureAirport, secondDepartureAirport, departureDate, returnDate); // Makes the SkyScanner API calls
+        return null;
     }
 
     // Using volley with the SkyScanner Rapid API to get flight prices
     private void getMinFlightPrice(final Flight flight)  {
         // 2018-12-01 <-- this is how the date needs to be formatted
-        // TODO: format the departure date??
         Airport departureAirport = flight.getDepartureAirport();
         Airport arrivalAirport = flight.getArrivalAirport();
         Date departureDate = flight.getDepartureDate();
-        String formattedDate = new SimpleDateFormat("yyyy-MM-dd").format(departureDate);
-        String url = "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/USD/en-US/"
-                + departureAirport.getAirportCode() + "-sky/" + arrivalAirport.getAirportCode() +
-                "-sky/" + formattedDate + "/%20";
+        String formattedDepartureDate = new SimpleDateFormat("yyyy-MM-dd").format(departureDate);
+        Date returnDate = flight.getReturnDate();
+        String formattedReturnDate = new SimpleDateFormat("yyyy-MM-dd").format(returnDate);
+
+        String url = "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes" +
+                "/v1.0/US/USD/en-US/" + departureAirport.getAirportCode() + "-sky/" +
+                arrivalAirport.getAirportCode() + "-sky/" + formattedDepartureDate + "/" + formattedReturnDate;
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
                 (Request.Method.GET, url, (String)null, new Response.Listener<JSONObject>() {
@@ -139,6 +134,7 @@ public abstract class AbstractAlgorithm {
         // This is where we create the ticketPairs
         Ticket ticket = new Ticket(flight, minPrice);
         String key = flight.getArrivalAirport().getAirportCode();
+        numberProcessed++;
 
         // Already have a ticketPair with this arrival airport, this is the second ticket
         if (arrivalAirportToPair.containsKey(key)) {
@@ -148,6 +144,15 @@ public abstract class AbstractAlgorithm {
             TicketPair pair = new TicketPair(ticket);
             arrivalAirportToPair.put(key, pair);
             ticketPairs.add(pair);
+        }
+
+        // Processed 20 tickets already, now can find the min one
+        if (numberProcessed == 4) {
+            TicketPair min = ticketPairs.get(0);
+            for (int i = 1; i < ticketPairs.size(); i++) {
+                min = findMin(min, ticketPairs.get(i)); // Calls the concrete class’ findMin()
+            }
+            // Start a new activity with the min. 
         }
     }
 

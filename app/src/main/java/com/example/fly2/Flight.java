@@ -7,12 +7,14 @@ public class Flight {
     private Airport departureAirport;
     private Airport arrivalAirport;
     private Date departureDate;
+    private Date returnDate;
     private City destinationCity;
 
-    public Flight(Airport departureAirport, Airport arrivalAirport, Date departureDate, City destinationCity) {
+    public Flight(Airport departureAirport, Airport arrivalAirport, Date departureDate, Date returnDate, City destinationCity) {
         this.departureAirport = departureAirport;
         this.arrivalAirport = arrivalAirport;
         this.departureDate = departureDate;
+        this.returnDate = returnDate;
         this.destinationCity = destinationCity;
     }
 
@@ -38,6 +40,14 @@ public class Flight {
 
     public void setDepartureDate(Date departureDate) {
         this.departureDate = departureDate;
+    }
+
+    public Date getReturnDate() {
+        return returnDate;
+    }
+
+    public void setReturnDateDate(Date returnDate) {
+        this.returnDate = returnDate;
     }
 
     public City getDestinationCity() {
