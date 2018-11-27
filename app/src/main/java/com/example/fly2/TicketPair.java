@@ -1,6 +1,9 @@
 package com.example.fly2;
 
-public class TicketPair {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class TicketPair implements Parcelable {
 
     private Ticket firstTicket;
     private Ticket secondTicket;
@@ -47,4 +50,15 @@ public class TicketPair {
         this.totalPrice = totalPrice;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeParcelable(firstTicket, flags);
+        dest.writeParcelable(secondTicket, flags);
+        dest.writeDouble(totalPrice);
+    }
 }

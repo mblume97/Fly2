@@ -12,8 +12,8 @@ public class AirportScreen extends AppCompatActivity {
 
     EditText airport1Input;
     EditText airport2Input;
-    String airport1;
-    String airport2;
+    Airport airport1;
+    Airport airport2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +21,7 @@ public class AirportScreen extends AppCompatActivity {
         setContentView(R.layout.activity_airport_screen);
         airport1Input = (EditText) findViewById(R.id.airport1input);
         airport2Input = (EditText) findViewById(R.id.airport2input);
-        // TODO: Make it so when selecting a city an airport is selected
+        // TODO: turn into airport objects
 
         // TODO: Do the autocomplete stuff by making an array in resources then connecting it (https://www.tutorialspoint.com/android/android_auto_complete.html)
         final Button btn = (Button)findViewById(R.id.btnToDatePicker);
@@ -35,8 +35,9 @@ public class AirportScreen extends AppCompatActivity {
     }
 
     public void pickDates(){
-        airport1 = String.valueOf(airport1Input.getText());
-        airport2 = String.valueOf(airport2Input.getText());
+        airport1 = new Airport(String.valueOf(airport1Input.getText()));
+        airport2 = new Airport(String.valueOf(airport2Input.getText()));
+
         if(airport1 == null || airport2 == null){
             System.out.print("airport is null don't do this fam");
             return;

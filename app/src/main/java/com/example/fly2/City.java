@@ -1,8 +1,11 @@
 package com.example.fly2;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.ArrayList;
 
-public class City {
+public class City implements Parcelable {
 
     private String cityName;
 //    private String cityCode;
@@ -17,6 +20,16 @@ public class City {
 
     public void setCityName(String cityName) {
         this.cityName = cityName;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(cityName);
     }
 
 //    public String getCityCode() {
