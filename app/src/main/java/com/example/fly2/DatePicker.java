@@ -65,7 +65,7 @@ public class DatePicker extends AppCompatActivity {
                 int dayR = Integer.parseInt(returnDateArr[0]);
                 int monthR = Integer.parseInt(returnDateArr[1])-1;
                 int yearR = Integer.parseInt(returnDateArr[2]);
-                returnDate = new GregorianCalendar(yearR, monthR, dayD).getTime();
+                returnDate = new GregorianCalendar(yearR, monthR, dayR).getTime();
                 // bundle it here
                 Intent intent = new Intent(DatePicker.this, LoadingActivity.class);
                 intent.putExtra("airport1", airport1);

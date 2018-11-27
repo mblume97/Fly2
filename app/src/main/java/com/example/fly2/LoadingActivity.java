@@ -25,7 +25,6 @@ import java.util.Map;
 
 public class LoadingActivity extends AppCompatActivity {
     // Does this mQueue need to be placed inside an actual activity? not sure
-    private Context context;
     private RequestQueue mQueue;
     private ArrayList<TicketPair> ticketPairs;
     private HashMap<String, TicketPair> arrivalAirportToPair;
@@ -39,15 +38,13 @@ public class LoadingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loading);
-        mQueue = Volley.newRequestQueue(context); // Needs to be placed inside actual activity.. or pass context
+        mQueue = Volley.newRequestQueue(this);
         Bundle extras = getIntent().getExtras();
         airport1 =  extras.getParcelable("airport1");
         airport2 = extras.getParcelable("airport2");
         departureDate = (Date) extras.get("departureDate");
         returnDate = (Date) extras.get("returnDate");
-
         findOptimal(airport1, airport2, departureDate, returnDate);
-
     }
 
 
@@ -68,8 +65,8 @@ public class LoadingActivity extends AppCompatActivity {
         arrivalAirportToPair = new HashMap<>();
 
         // loading the local json
-        String codeToCity = Helpers.loadJSONFromAsset(context, "airport_code_to_city.json"); // Pass context if possible?? place inside activity?
-        String codeToAirportName = Helpers.loadJSONFromAsset(context, "airport_code_to_name.json");
+        String codeToCity = Helpers.loadJSONFromAsset(this, "airport_code_to_city.json"); // Pass context if possible?? place inside activity?
+        String codeToAirportName = Helpers.loadJSONFromAsset(this, "airport_code_to_name.json");
         try {
             JSONObject codeToCityJSON = new JSONObject(codeToCity);
             JSONObject codeToAirportNameJSON = new JSONObject(codeToAirportName);
