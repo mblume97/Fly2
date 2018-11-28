@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Fly2</string>
+
+    <string-array name="airport_cities">
+        <item>ORD</item>
+        <item>IAH</item>
+        <item>JFK</item>
+        <item>LAX</item>
+        <item>ATL</item>
+    </string-array>
 </resources>
