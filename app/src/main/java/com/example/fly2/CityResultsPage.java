@@ -19,6 +19,7 @@ import com.koushikdutta.ion.Ion;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -64,6 +65,7 @@ public class CityResultsPage extends AppCompatActivity {
         url = PhotoClient.createURL("atlanta");
         imageView = findViewById(R.id.imageView);
         displayImage();
+        getHotels(city);
     }
 
 
@@ -91,6 +93,39 @@ public class CityResultsPage extends AppCompatActivity {
         }
     });
     mQueue.add(jsonObjectRequest);
+    }
+
+
+    private void getHotels(String city) {
+        String CLIENT_ID = "ZRDWZXYGEC4UQS0YOVIHDJX3J5YW5PMLSPRVWGIORIU5J3VI";
+        String CLIENT_SECRET = "TQXHIYG1WLMWB5GFLSPXPXRB4LTNV4XIYXZ5KMVYHYLXEOEA";
+        String url = "https://api.foursquare.com/v2/venues/search?client_id=" + CLIENT_ID +
+                "&client_secret=" + CLIENT_SECRET + "&near=" + city + "&query=hotel&limit=3&v=20181128";
+
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
+                (Request.Method.GET, url, (String)null, new Response.Listener<JSONObject>() {
+
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            JSONArray venues = response.getJSONObject("response").getJSONArray("venues");
+                            for (int i = 0; i < 3; i++) {
+                                JSONObject venue = venues.getJSONObject(i);
+                                String name = venue.getString("name");
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        error.printStackTrace();
+                    }
+                });
+        mQueue.add(jsonObjectRequest);
     }
 
 
