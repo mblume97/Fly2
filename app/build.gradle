@@ -29,5 +29,7 @@ dependencies {
     implementation 'com.github.subirZ:DateRangePicker:1.0'
     implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.android.support:design:27.1.1'
+    implementation 'com.loopj.android:android-async-http:1.4.9'
+    implementation 'com.koushikdutta.ion:ion:2.+'
 
 }
