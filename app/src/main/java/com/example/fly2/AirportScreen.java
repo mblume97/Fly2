@@ -21,10 +21,6 @@ public class AirportScreen extends AppCompatActivity {
     Spinner airportSelection1;
     Spinner airportSelection2;
 
-    private static final String[] COUNTRIES = new String[] {
-            "Belgium", "France", "Italy", "Germany", "Spain"
-    }; // TODO: Make this a res file for cleanliness
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

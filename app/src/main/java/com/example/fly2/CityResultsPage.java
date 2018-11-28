@@ -38,9 +38,9 @@ public class CityResultsPage extends AppCompatActivity {
     private String firstAirline;
     private String secondAirline;
     private String airline;
-    String url;
-    AsyncHttpClient client;
-    ImageView imageView;
+    private String url;
+    private AsyncHttpClient client;
+    private ImageView imageView;
     private RequestQueue mQueue;
 
     @Override
@@ -59,7 +59,8 @@ public class CityResultsPage extends AppCompatActivity {
         firstAirline = extras.getString("firstAirline");
         secondAirline = extras.getString("secondAirline");
 
-        System.out.print("");
+
+        // TODO: if either price is infinity, display there are no flights to any destination
 
         this.client = new AsyncHttpClient();
         url = PhotoClient.createURL("atlanta");
@@ -101,7 +102,6 @@ public class CityResultsPage extends AppCompatActivity {
         String CLIENT_SECRET = "TQXHIYG1WLMWB5GFLSPXPXRB4LTNV4XIYXZ5KMVYHYLXEOEA";
         String url = "https://api.foursquare.com/v2/venues/search?client_id=" + CLIENT_ID +
                 "&client_secret=" + CLIENT_SECRET + "&near=" + city + "&query=hotel&limit=3&v=20181128";
-
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
                 (Request.Method.GET, url, (String)null, new Response.Listener<JSONObject>() {
