@@ -13,4 +13,9 @@ public class CityInformation extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_city_information);
     }
+
+    // TODO: Implement foursquare API
+
+    // TODO: Make method that takes in city and query and then returns foursquare
+    // TODO: Parse JSON arrays
 }
