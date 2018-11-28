@@ -7,10 +7,9 @@ public class TicketPair implements Parcelable {
 
     private Ticket firstTicket;
     private Ticket secondTicket;
-    private double totalPrice;
+    private Double totalPrice;
 
-
-    public TicketPair(Ticket firstTicket, Ticket secondTicket, double totalPrice) {
+    public TicketPair(Ticket firstTicket, Ticket secondTicket, Double totalPrice) {
         this.firstTicket = firstTicket;
         this.secondTicket = secondTicket;
         this.totalPrice = totalPrice;
@@ -20,6 +19,24 @@ public class TicketPair implements Parcelable {
         this.firstTicket = firstTicket;
         totalPrice = firstTicket.getPrice();
     }
+
+    protected TicketPair(Parcel in) {
+        firstTicket = in.readParcelable(Ticket.class.getClassLoader());
+        secondTicket = in.readParcelable(Ticket.class.getClassLoader());
+        totalPrice = in.readDouble();
+    }
+
+    public static final Creator<TicketPair> CREATOR = new Creator<TicketPair>() {
+        @Override
+        public TicketPair createFromParcel(Parcel in) {
+            return new TicketPair(in);
+        }
+
+        @Override
+        public TicketPair[] newArray(int size) {
+            return new TicketPair[size];
+        }
+    };
 
     public void addSecondTicket(Ticket secondTicket) {
         this.secondTicket = secondTicket;
@@ -42,11 +59,11 @@ public class TicketPair implements Parcelable {
         this.secondTicket = secondTicket;
     }
 
-    public double getTotalPrice() {
+    public Double getTotalPrice() {
         return totalPrice;
     }
 
-    public void setTotalPrice(double totalPrice) {
+    public void setTotalPrice(Double totalPrice) {
         this.totalPrice = totalPrice;
     }
 

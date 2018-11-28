@@ -12,6 +12,7 @@ public class Airport implements Parcelable {
         this.airportCode = airportCode;
         this.airportName = airportName;
     }
+
     public Airport(String airportCode) {
         this.airportCode = airportCode;
         // TODO: Map to JSON code because MUST have the object

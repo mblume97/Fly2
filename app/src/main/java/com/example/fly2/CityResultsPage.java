@@ -6,9 +6,24 @@ import android.os.Bundle;
 // results that allows users to pick what city to go to
 public class CityResultsPage extends AppCompatActivity {
 
+    private double price;
+    private String city;
+    private String airportCode;
+    private String airportName;
+    private String airline;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_city_results_page);
+        Bundle extras = getIntent().getExtras();
+
+        price = extras.getDouble("price");
+        city = extras.getString("city");
+        airportCode = extras.getString("code");
+        airportName = extras.getString("name");
+        airline = extras.getString("airline");
+
+        System.out.print("");
     }
 }

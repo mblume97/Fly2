@@ -6,9 +6,10 @@ import android.os.Parcelable;
 public class Ticket implements Parcelable {
 
     private Flight flight;
-    private double price;
+    private Double price;
 
-    public Ticket(Flight flight, double price) {
+
+    public Ticket(Flight flight, Double price) {
         this.flight = flight;
         this.price = price;
     }
@@ -38,11 +39,11 @@ public class Ticket implements Parcelable {
         this.flight = flight;
     }
 
-    public double getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 
@@ -53,7 +54,7 @@ public class Ticket implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeDouble(price);
         dest.writeParcelable(flight, flags);
+        dest.writeDouble(price);
     }
 }

@@ -14,6 +14,22 @@ public class City implements Parcelable {
         this.cityName = cityName;
     }
 
+    protected City(Parcel in) {
+        cityName = in.readString();
+    }
+
+    public static final Creator<City> CREATOR = new Creator<City>() {
+        @Override
+        public City createFromParcel(Parcel in) {
+            return new City(in);
+        }
+
+        @Override
+        public City[] newArray(int size) {
+            return new City[size];
+        }
+    };
+
     public String getCityName() {
         return cityName;
     }
