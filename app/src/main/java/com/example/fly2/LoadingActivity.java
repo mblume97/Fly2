@@ -153,6 +153,7 @@ public class LoadingActivity extends AppCompatActivity {
     // Callback function, once the response is made
     private void processResponse(Flight flight, double minPrice, String airline) {
         // This is where we create the ticketPairs
+        flight.setAirline(airline);
         Ticket ticket = new Ticket(flight, minPrice);
         String key = flight.getArrivalAirport().getAirportCode();
         numberProcessed++;
@@ -175,11 +176,13 @@ public class LoadingActivity extends AppCompatActivity {
             }
             // Start a new activity with the min.
             Intent intent = new Intent(this, CityResultsPage.class);
-            intent.putExtra("price", min.getTotalPrice());
+            intent.putExtra("firstPrice", min.getFirstTicket().getPrice());
+            intent.putExtra("secondPrice", min.getSecondTicket().getPrice());
             intent.putExtra("city", min.getSecondTicket().getFlight().getDestinationCity().getCityName());
             intent.putExtra("code", min.getSecondTicket().getFlight().getArrivalAirport().getAirportCode());
             intent.putExtra("name", min.getSecondTicket().getFlight().getArrivalAirport().getAirportName());
-            intent.putExtra("airline", airline);
+            intent.putExtra("firstAirline", min.getFirstTicket().getFlight().getAirline());
+            intent.putExtra("secondAirline", min.getSecondTicket().getFlight().getAirline());
             startActivity(intent);
         }
     }

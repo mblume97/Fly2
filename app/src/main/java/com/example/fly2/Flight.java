@@ -12,6 +12,7 @@ public class Flight implements Parcelable {
     private Date departureDate;
     private Date returnDate;
     private City destinationCity;
+    private String airline;
 
     public Flight(Airport departureAirport, Airport arrivalAirport, Date departureDate, Date returnDate, City destinationCity) {
         this.departureAirport = departureAirport;
@@ -79,6 +80,12 @@ public class Flight implements Parcelable {
         this.destinationCity = destinationCity;
     }
 
+    public String getAirline() { return airline; }
+
+    public void setAirline(String airline) {
+        this.airline = airline;
+    }
+
 
     @Override
     public int describeContents() {
@@ -92,6 +99,7 @@ public class Flight implements Parcelable {
         dest.writeLong(departureDate.getTime()); // REMEMBER TO CONVERT IT BACK TO A DATE OBJECT
         dest.writeLong(returnDate.getTime());
         dest.writeParcelable(destinationCity, flags);
+        dest.writeString(airline);
     }
 
 }
