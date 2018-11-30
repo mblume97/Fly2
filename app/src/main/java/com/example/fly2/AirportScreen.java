@@ -88,7 +88,6 @@ public class AirportScreen extends AppCompatActivity {
                 // do what you want
                 airportSelection2.setVisibility(View.VISIBLE);
                 airportPrompt2.setVisibility(View.VISIBLE);
-                drawable.start();
             }
 
             @Override
@@ -147,6 +146,7 @@ public class AirportScreen extends AppCompatActivity {
                 // Create date objects from the strings
                 departureDate = createDate(selectedStartDate);
                 returnDate = createDate(selectedEndDate);
+                drawable.start();
             }
         });
         dateRangePicker.show();
