@@ -13,8 +13,8 @@ public class Tests {
 
     @Test
     public void find_min_returns_cheapest_ticket_pair() {
-        TicketPair one = new TicketPair(null, null, 60);
-        TicketPair two = new TicketPair(null, null, 100);
+        TicketPair one = new TicketPair(null, null, new Double(60));
+        TicketPair two = new TicketPair(null, null, new Double(100));
         LoadingActivity loadingActivity = new LoadingActivity();
         TicketPair min = loadingActivity.findMin(one, two);
         assertSame(one, min);
