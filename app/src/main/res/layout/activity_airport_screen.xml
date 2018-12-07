@@ -20,19 +20,18 @@
 
     <Spinner
         android:id="@+id/spinnerAirport1"
-        android:layout_width="192dp"
-        android:layout_height="61dp"
+        android:layout_width="283dp"
+        android:layout_height="56dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="188dp"
-        android:layout_marginEnd="96dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.921"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Spinner
         android:id="@+id/spinnerAirport2"
-        android:layout_width="192dp"
+        android:layout_width="283dp"
         android:layout_height="56dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="304dp"
