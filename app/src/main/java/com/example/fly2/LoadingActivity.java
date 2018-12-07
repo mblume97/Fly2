@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Locale;
 import java.util.Map;
 
 public class LoadingActivity extends AppCompatActivity {
@@ -33,6 +34,8 @@ public class LoadingActivity extends AppCompatActivity {
     Airport airport2;
     Date departureDate;
     Date returnDate;
+    String departureDateFormatted;
+    String returnDateFormatted;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +46,9 @@ public class LoadingActivity extends AppCompatActivity {
         airport1 =  extras.getParcelable("airport1");
         airport2 = extras.getParcelable("airport2");
         departureDate = (Date) extras.get("departureDate");
+        departureDateFormatted = new SimpleDateFormat("MMMM dd, yyyy", Locale.US).format(departureDate);
         returnDate = (Date) extras.get("returnDate");
+        returnDateFormatted = new SimpleDateFormat("MMMM dd, yyyy", Locale.US).format(returnDate);
         findOptimal(airport1, airport2, departureDate, returnDate);
     }
 
@@ -166,7 +171,7 @@ public class LoadingActivity extends AppCompatActivity {
         }
 
         // Processed 20 tickets already, now can find the min one
-        if (numberProcessed == 4) {
+        if (numberProcessed == 10) {
             TicketPair min = ticketPairs.get(0);
             for (int i = 1; i < ticketPairs.size(); i++) {
                 min = findMin(min, ticketPairs.get(i)); // Calls the concrete class’ findMin()
@@ -182,6 +187,8 @@ public class LoadingActivity extends AppCompatActivity {
             intent.putExtra("secondAirline", min.getSecondTicket().getFlight().getAirline());
             intent.putExtra("firstAirport", min.getFirstTicket().getFlight().getDepartureAirport().getAirportName());
             intent.putExtra("secondAirport", min.getSecondTicket().getFlight().getDepartureAirport().getAirportName());
+            intent.putExtra("departureDate", departureDateFormatted);
+            intent.putExtra("returnDate", returnDateFormatted);
             startActivity(intent);
         }
     }

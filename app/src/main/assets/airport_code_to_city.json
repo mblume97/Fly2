@@ -1,11 +1,11 @@
 {
   "ATL": "Atlanta, GA",
-  "LAX": "Los Angeles, CA"
-//  "ORD": "Chicago, IL",
-//  "LAS": "Las Vegas, NV",
-//  "SEA": "Seattle, WA",
+  "LAX": "Los Angeles, CA",
+  "ORD": "Chicago, IL",
+  "LAS": "Las Vegas, NV",
+  "SEA": "Seattle, WA"
 //  "CLT": "Charlotte, NC",
-//  "EWR": "New Jersey, NJ",
+//  "EWR": "New Jersey, NJ"
 //  "MCO": "Orlando, FL",
 //  "PHX": "Phoenix, AZ",
 //  "MIA": "Miami, FL",

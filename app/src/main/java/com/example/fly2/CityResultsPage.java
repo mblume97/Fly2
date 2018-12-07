@@ -43,6 +43,8 @@ public class CityResultsPage extends AppCompatActivity {
     private String secondAirline;
     private String firstAirport;
     private String secondAirport;
+    private String departureDate;
+    private String returnDate;
     private String airline;
     private AsyncHttpClient client;
     private ImageView imageView;
@@ -69,7 +71,8 @@ public class CityResultsPage extends AppCompatActivity {
         secondAirline = extras.getString("secondAirline");
         firstAirport = extras.getString("firstAirport");
         secondAirport = extras.getString("secondAirport");
-
+        departureDate = extras.getString("departureDate");
+        returnDate = extras.getString("returnDate");
 
         TextView destinationTextView = (TextView)findViewById(R.id.destinationCity);
         destinationTextView.setText(city);
