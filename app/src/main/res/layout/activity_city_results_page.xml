@@ -16,8 +16,10 @@
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="373dp"
+            android:adjustViewBounds = "true"
+            android:layout_width="434dp"
             android:layout_height="219dp"
+            android:scaleType="fitXY"
             android:layout_gravity="center_horizontal" />
 
         <TextView
@@ -87,12 +89,12 @@
         <TextView
             android:id="@+id/secondAirportName"
             android:layout_width="282dp"
-            android:layout_height="32dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="10dp"
             android:gravity="center_horizontal"
             android:text="Second Airport Name"
-            android:textSize="18dp"
+            android:textSize="24dp"
             android:textStyle="bold" />
 
         <LinearLayout
