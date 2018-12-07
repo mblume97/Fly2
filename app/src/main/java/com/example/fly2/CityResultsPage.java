@@ -52,6 +52,7 @@ public class CityResultsPage extends AppCompatActivity {
     private TextView firstHotelView;
     private TextView secondHotelView;
     private TextView thirdHotelView;
+    private TextView dateView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,6 +95,9 @@ public class CityResultsPage extends AppCompatActivity {
 
         TextView secondAirportView = (TextView)findViewById(R.id.secondAirportName);
         secondAirportView.setText(secondAirport);
+
+        TextView dateView = (TextView) findViewById(R.id.dateTextView);
+        dateView.setText(departureDate + " - " + returnDate);
 
         firstHotelView = (TextView)findViewById(R.id.firstHotel);
         secondHotelView = (TextView)findViewById(R.id.secondHotel);

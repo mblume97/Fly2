@@ -175,8 +175,6 @@ public class AirportScreen extends AppCompatActivity {
         intent.putExtra("returnDate", returnDate);
         startActivity(intent);
     }
-
-
     // this is where the screen to select the two airports appear
     // needs 2 insert text boxes
     // next button to bundle and pass in to the date picker
