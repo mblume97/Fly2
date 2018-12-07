@@ -68,8 +68,8 @@ public class LoadingActivity extends AppCompatActivity {
         try {
             JSONObject codeToCityJSON = new JSONObject(codeToCity);
             JSONObject codeToAirportNameJSON = new JSONObject(codeToAirportName);
-//            firstDepartureAirport.setAirportName(codeToAirportNameJSON.getString(firstDepartureAirport.getAirportCode()));
-//            secondDepartureAirport.setAirportName(codeToAirportNameJSON.getString(secondDepartureAirport.getAirportCode()));
+            firstDepartureAirport.setAirportName(codeToAirportNameJSON.getString(firstDepartureAirport.getAirportCode()));
+            secondDepartureAirport.setAirportName(codeToAirportNameJSON.getString(secondDepartureAirport.getAirportCode()));
             // String temp = obj.getString("ATL"); // How to receive one of the values
             Iterator<String> iter = codeToCityJSON.keys();
             while (iter.hasNext()) {
@@ -123,7 +123,6 @@ public class LoadingActivity extends AppCompatActivity {
                                     }
                                 }
                             }
-                            System.out.println(minPrice);
                             // callback function
                             processResponse(flight, minPrice, airlineName);
                         } catch (JSONException e) {
@@ -140,8 +139,6 @@ public class LoadingActivity extends AppCompatActivity {
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String> headers = new HashMap<>();
                 // Basic Authentication
-//                headers.put("X-Mashape-Key", "91rhzu8E36mshrcePFFwhHA5sgHmp1q8X6yjsnxJqCaMtEwv3Y");
-//                headers.put("X-Mashape-Host", "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com");
                 headers.put("X-RapidAPI-Key", "91rhzu8E36mshrcePFFwhHA5sgHmp1q8X6yjsnxJqCaMtEwv3Y");
                 return headers;
             }
@@ -183,6 +180,8 @@ public class LoadingActivity extends AppCompatActivity {
             intent.putExtra("name", min.getSecondTicket().getFlight().getArrivalAirport().getAirportName());
             intent.putExtra("firstAirline", min.getFirstTicket().getFlight().getAirline());
             intent.putExtra("secondAirline", min.getSecondTicket().getFlight().getAirline());
+            intent.putExtra("firstAirport", min.getFirstTicket().getFlight().getDepartureAirport().getAirportName());
+            intent.putExtra("secondAirport", min.getSecondTicket().getFlight().getDepartureAirport().getAirportName());
             startActivity(intent);
         }
     }

@@ -41,6 +41,8 @@ public class CityResultsPage extends AppCompatActivity {
     private String airportName;
     private String firstAirline;
     private String secondAirline;
+    private String firstAirport;
+    private String secondAirport;
     private String airline;
     private AsyncHttpClient client;
     private ImageView imageView;
@@ -65,6 +67,8 @@ public class CityResultsPage extends AppCompatActivity {
         airportName = extras.getString("name");
         firstAirline = extras.getString("firstAirline");
         secondAirline = extras.getString("secondAirline");
+        firstAirport = extras.getString("firstAirport");
+        secondAirport = extras.getString("secondAirport");
 
 
         TextView destinationTextView = (TextView)findViewById(R.id.destinationCity);
@@ -81,6 +85,12 @@ public class CityResultsPage extends AppCompatActivity {
 
         TextView secondAirlineView = (TextView)findViewById(R.id.secondAirline);
         secondAirlineView.setText(secondAirline);
+
+        TextView firstAirportView = (TextView)findViewById(R.id.firstAirportName);
+        firstAirportView.setText(firstAirport);
+
+        TextView secondAirportView = (TextView)findViewById(R.id.secondAirportName);
+        secondAirportView.setText(secondAirport);
 
         firstHotelView = (TextView)findViewById(R.id.firstHotel);
         secondHotelView = (TextView)findViewById(R.id.secondHotel);

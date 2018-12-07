@@ -166,8 +166,8 @@ public class AirportScreen extends AppCompatActivity {
 
     // next button to initialize this
     public void startLoadingActivity(){
-        airport1 = new Airport(airportSelection1.getSelectedItem().toString());
-        airport2 = new Airport(airportSelection2.getSelectedItem().toString());
+        airport1 = new Airport(airportSelection1.getSelectedItem().toString().substring(0,3));
+        airport2 = new Airport(airportSelection2.getSelectedItem().toString().substring(0,3));
         Intent intent = new Intent(AirportScreen.this, LoadingActivity.class);
         intent.putExtra("airport1", airport1);
         intent.putExtra("airport2", airport2);

@@ -2,10 +2,62 @@
     <string name="app_name">Fly2</string>
 
     <string-array name="airport_cities">
-        <item>ORD</item>
-        <item>IAH</item>
-        <item>JFK</item>
-        <item>LAX</item>
-        <item>ATL</item>
+        <item> </item>
+        <item>ABQ - Albuquerque, NM</item>
+        <item>ANC - Anchorage, AK</item>
+        <item>ATL - Atlanta, GA</item>
+        <item>AUS - Austin, TX</item>
+        <item>BDL - Hartford, CT</item>
+        <item>BNA - Nashville, TN</item>
+        <item>BOS - Boston, MA</item>
+        <item>BUF - Buffalo, NY</item>
+        <item>BUR - Burbank, CA</item>
+        <item>BWI - Baltimore, MD</item>
+        <item>CLE - Cleveland, OH</item>
+        <item>CLT - Charlotte, NC</item>
+        <item>CMH - Columbus, OH</item>
+        <item>CVG - Cincinnati, OH</item>
+        <item>DAL - Dallas, TX</item>
+        <item>DCA - Washington, D.C.</item>
+        <item>DTW - Detroit, MI</item>
+        <item>EWR - New Jersey, NJ</item>
+        <item>FLL - Fort Lauderdale, FL</item>
+        <item>HNL - Honolulu, HI</item>
+        <item>HOU - Houston, TX</item>
+        <item>IAD - Washington, D.C.</item>
+        <item>IAH - Houston, TX</item>
+        <item>IND - Indianapolis, IN</item>
+        <item>JAX - Jacksonville, FL</item>
+        <item>LAS - Las Vegas, NV</item>
+        <item>LAX - Los Angeles, CA</item>
+        <item>LGA - New York, NY</item>
+        <item>MCI - Kansas City, MO</item>
+        <item>MCO - Orlando, FL</item>
+        <item>MDW - Chicago, IL</item>
+        <item>MIA - Miami, FL</item>
+        <item>MKE - Milwaukee, WI</item>
+        <item>MSP - Minneapolis, MN</item>
+        <item>MSY - New Orleans, LA</item>
+        <item>OAK - Oakland, CA</item>
+        <item>OGG - Kahului, HI</item>
+        <item>OMA - Omaha, NE</item>
+        <item>ORD - Chicago, IL</item>
+        <item>PBI - West Palm Beach, FL</item>
+        <item>PDX - Portland, OR</item>
+        <item>PHL - Philadelphia, PA</item>
+        <item>PHX - Phoenix, AZ</item>
+        <item>PIT - Pittsburgh, PA</item>
+        <item>RDU - Raleigh, NC</item>
+        <item>RSW - Fort Myers, FL</item>
+        <item>SAN - San Diego, CA</item>
+        <item>SAT - San Antonio, TX</item>
+        <item>SEA - Seattle, WA</item>
+        <item>SJC - San Jose, CA</item>
+        <item>SJU - San Juan, PR</item>
+        <item>SLC - Salt Lake City, UT</item>
+        <item>SMF - Sacramento, CA</item>
+        <item>SNA - Santa Ana, CA</item>
+        <item>STL - St. Louis, MO</item>
+        <item>TPA - Tampa, FL</item>
     </string-array>
 </resources>
